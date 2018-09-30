@@ -64,10 +64,21 @@ $ catkin_make
 ### 9.1
 
 パッケージを作るときにrospyとroscppを追加します。
+パッケージ名は`cpimouse_run_corridor`とでもしておきましょう。
 
 ```
 $ cd ~/catkin_ws/src/
-$ catkin_create_pkg pimouse_run_corridor rospy roscpp
+$ catkin_create_pkg cpimouse_run_corridor rospy roscpp
 ```
 
+`wall_stop.launch`は、本の内容から次のように変えます。
+（`wall_stop.py`ではなく`wall_stop`を実行するようにする。）
 
+* https://github.com/ryuichiueda/cpimouse_run_corridor/blob/master/launch/wall_stop.launch
+
+
+### 9.2
+
+C++のコードの例は次のURLにあります。
+
+* https://github.com/ryuichiueda/cpimouse_run_corridor/blob/master/src/wall_stop.cpp
