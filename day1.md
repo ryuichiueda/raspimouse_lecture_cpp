@@ -40,6 +40,8 @@ C.6章の「イメージからインストールしたLinuxのパーティショ
 
 ### 5〜8章に相当する内容
 
+#### パッケージのダウンロードとビルド
+
 `raspimouse_ros_2`をダウンロードして`catkin_make`します。
 
 ```
@@ -48,6 +50,9 @@ $ git clone git@github.com:ryuichiueda/raspimouse_ros_2.git
 $ cd ~/catkin_ws/
 $ catkin_make
 ```
+
+#### 動作確認
+
 
 ### 9.1
 
