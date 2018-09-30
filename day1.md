@@ -22,7 +22,6 @@ C.6章の「イメージからインストールしたLinuxのパーティショ
 
 2.1.6項「設定ファイルの修正」は、上記URLにあるイメージを使用した場合は不要です。
 
-
 ## Linuxの性質と基本操作
 
 3章の内容を一つずつ確認していきます。
@@ -30,4 +29,33 @@ C.6章の「イメージからインストールしたLinuxのパーティショ
 ### 補足資料
 
 * https://github.com/ryuichiueda/robosys2018/blob/master/03.md
+
+## GitやGitHubを用いたソフトウェアの管理
+
+4章の内容を一つずつ確認していきます。
+
+## ROSでロボットを走らせる
+
+9章の制作物をPythonではなくC++を用いて作ります。
+
+### 5〜8章に相当する内容
+
+`raspimouse_ros_2`をダウンロードして`catkin_make`します。
+
+```
+$ cd ~/catkin_ws/src/
+$ git clone git@github.com:ryuichiueda/raspimouse_ros_2.git
+$ cd ~/catkin_ws/
+$ catkin_make
+```
+
+### 9.1
+
+パッケージを作るときにrospyとroscppを追加します。
+
+```
+$ cd ~/catkin_ws/src/
+$ catkin_create_pkg pimouse_run_corridor rospy roscpp
+```
+
 
