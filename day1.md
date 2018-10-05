@@ -22,6 +22,11 @@ C.6章の「イメージからインストールしたLinuxのパーティショ
 
 2.1.6項「設定ファイルの修正」は、上記URLにあるイメージを使用した場合は不要です。
 
+* SSHで入ったら以下を確認
+	* エディタ、vimtutor
+	* コンパイル言語のコーディングと実行
+	* スクリプト言語のコーディングと実行
+
 -----
 
 ## Linuxの性質と基本操作
@@ -79,6 +84,25 @@ $ catkin_create_pkg cpimouse_run_corridor rospy roscpp
 
 ### 9.2
 
+#### CMakeLists.txtの編集
+
+ビルドについては書籍で使用しているPythonとは異なり、
+ヘッダファイルのインクルードやライブラリとのリンクの
+設定を記述しなければならないので、`CMakeLists.txt`
+を適切に設定する必要があります。
+
+書籍（`catkin_create_pkg`が出力するもの）と
+C++用の`CMakeLists.txt`の違いは次の通りです。
+
+* add_executable: 実行するノードの実行ファイルと、元になるcppファイルを記述
+    * `add_executable(wall_stop src/wall_stop.cpp)`
+* add_dependencies: 実行するノードの実行ファイルが依存するものが先にビルドされるように設定
+    * https://cmake.org/cmake/help/latest/command/add_dependencies.html
+    * `add_dependencies(wall_stop ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})`
+* target_link_libraries: リンクするライブラリの指定
+    * https://cmake.org/cmake/help/latest/command/target_link_libraries.html?highlight=target_link_libraries#libraries-for-a-target-and-or-its-dependents
+    * `target_link_libraries(wall_stop ${catkin_LIBRARIES})`
+
 #### プログラミング
 
 C++のコードの例は次のURLにあります。コードは`src`という
@@ -107,21 +131,6 @@ C++のコードの例は次のURLにあります。コードは`src`という
 
 （63行目は余計かもしれません。）
 
-#### CMakeLists.txtの編集
+#### その他のコード
 
-ビルドについては書籍で使用しているPythonとは異なり、
-ヘッダファイルのインクルードやライブラリとのリンクの
-設定を記述しなければならないので、`CMakeLists.txt`
-を適切に設定する必要があります。
-
-書籍（`catkin_create_pkg`が出力するもの）と
-C++用の`CMakeLists.txt`の違いは次の通りです。
-
-* add_executable: 実行するノードの実行ファイルと、元になるcppファイルを記述
-    * `add_executable(wall_stop src/wall_stop.cpp)`
-* add_dependencies: 実行するノードの実行ファイルが依存するものが先にビルドされるように設定
-    * https://cmake.org/cmake/help/latest/command/add_dependencies.html
-    * `add_dependencies(wall_stop ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})`
-* target_link_libraries: リンクするライブラリの指定
-    * https://cmake.org/cmake/help/latest/command/target_link_libraries.html?highlight=target_link_libraries#libraries-for-a-target-and-or-its-dependents
-    * `target_link_libraries(wall_stop ${catkin_LIBRARIES})`
+余裕のある場合は`wall_stop_accel.cpp`、`wall_trace.cpp`、`wall_around.cpp`をやってみる。
