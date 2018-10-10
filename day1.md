@@ -131,6 +131,26 @@ C++のコードの例は次のURLにあります。コードは`src`という
 
 （63行目は余計かもしれません。）
 
+#### C++ その1
+
+`wall_stop.cpp`内の関数の一部をクラスにしてみましょう。
+
+* https://github.com/ryuichiueda/cpimouse_run_corridor/blob/class/src/wall_stop.cpp
+
+#### C++ その2
+
+クラスの内容を`.h`ファイル、`.cpp`ファイルに分離してみましょう。
+
+* https://github.com/ryuichiueda/cpimouse_run_corridor/blob/class2/src/
+
+* [CMakeLists.txt](https://github.com/ryuichiueda/cpimouse_run_corridor/blob/class2/CMakeLists.txt)の編集
+    * C++14（11, 17, 20）を使えるようにする: `add_compile_options(-std=c++14)`
+    * ライブラリの追加: `add_library(WallStop src/WallStop.cpp)`
+    * `add_dependencies`の追加: `add_dependencies(WallStop ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})`
+        * 他のパッケージのライブラリを使うときに必要（この場合は`raspimouse_ros_2`）
+    * `target_link_libraries`の編集: `target_link_libraries(wall_stop WallStop ${catkin_LIBRARIES})`
+        * `WallStop`を追加
+
 #### その他のコード
 
 余裕のある場合は`wall_stop_accel.cpp`、`wall_trace.cpp`、`wall_around.cpp`をやってみる。
