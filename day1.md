@@ -55,6 +55,7 @@ C.6章の「イメージからインストールしたLinuxのパーティショ
 $ cd ~/catkin_ws/src/
 $ git clone git@github.com:ryuichiueda/raspimouse_ros_2.git
 $ cd ~/catkin_ws/
+$ rosdep install raspimouse_ros_2
 $ catkin_make
 ```
 
