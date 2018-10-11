@@ -92,9 +92,9 @@ $ catkin_create_pkg cpimouse_run_corridor rospy roscpp
 設定を記述しなければならないので、`CMakeLists.txt`
 を適切に設定する必要があります。
 
-書籍（`catkin_create_pkg`が出力するもの）と
-C++用の`CMakeLists.txt`の違いは次の通りです。
+C++用の`CMakeLists.txt`で編集する箇所は以下の通りです。
 
+* find_package: raspimouse_ros_2を追加
 * add_executable: 実行するノードの実行ファイルと、元になるcppファイルを記述
     * `add_executable(wall_stop src/wall_stop.cpp)`
 * add_dependencies: 実行するノードの実行ファイルが依存するものが先にビルドされるように設定
