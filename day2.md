@@ -4,11 +4,10 @@
 
 ## シェルスクリプトの記述とGitHubへのアップロード
 
-3.3節から4章までを忠実に。
+* 3.3節から4章までを忠実に。
+* その後、cpimouse_run_corridorをGitHubにアップしましょう。
 
-その後、cpimouse_run_corridorをアップしましょう。
-
-### ローカルでテスト
+## ローカルでのパッケージのテスト
 
 基本的に入出力だけ確認できれば良いので、とりあえず以下の手順で。
 
@@ -18,6 +17,7 @@
 * 手でダミーのデバイスファイルの値を確認
 
 ``` 
+$ roslaunch cpimouse_run_corridor wall_stop.launch
 ###モータへの出力の初期値を確認###
 $ head /dev/rtmotor_raw_?0 
 ==> /dev/rtmotor_raw_l0 <==
@@ -36,9 +36,9 @@ $ head /dev/rtmotor_raw_?0
 0
 ``` 
 
-* センサの値をダミーファイルにセット
+* 自動のシェルスクリプトを書く
+    * https://github.com/ryuichiueda/cpimouse_run_corridor/blob/master/test/manual_test.bash
 
-* モータの出力を確認
 
 ## Travis CIでのテスト
 
