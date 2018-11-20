@@ -87,11 +87,28 @@ rostest log file is in /home/ueda/.ros/log/rostest-ubuntu-8352.log
 
 ## Travis CIでのテスト
 
+Travis CIはCIサイトの一つで、GitHubと連携してテストを実行できます。他にもCircleCIや、GitLab（GitのホスティングとCIの両方を持っている）などのサービスがあります。
 
-
-
-### 準備
+### 使い方
 
 * Sign In with GitHub
 * 顔アイコン->Settingsで`cpimouse_run_corridor`のスイッチON
+* YAML形式のファイル`.travis.yml`にテストのためのセットアップやテストの手順を記述
+    * おそらくDockerを使った方がいいのですが、その都度ROSをインストールする力づく対応で
+
+```
+sudo: required
+dist: xenial
+install:
+  - bash -xve ./test/travis_ros_install.bash
+  - source ~/catkin_ws/devel/setup.bash
+  - bash -xve ./test/travis_package_make.bash
+  - source ~/catkin_ws/devel/setup.bash
+  - bash -xve ./test/travis_prepare_dummy_files.bash
+script:
+  - rostest cpimouse_run_corridor wall_stop.launch
+```
+
+* GitHubにpushすると勝手にテストが走ります。
+
 
