@@ -50,7 +50,45 @@ C++でもいいんですがちょっと冗長になってしまうので、こ�
     * `self`: 自分への参照
     * `assert...`: 引数の内容をチェックして、ダメだとコードを止めて非ゼロの終了ステータスを返す
 
+### 実行
+
+launchファイルにテストのための要素を書きます。
+
+```
+$ cat ../launch/wall_stop.launch
+<launch>
+  <include file="$(find raspimouse_ros_2)/launch/raspimouse.launch" />
+  <node pkg="cpimouse_run_corridor" name="wall_stop" type="wall_stop" required="true" />
+  <test test-name="test_wall_stop" pkg="cpimouse_run_corridor" type="travis_test_wall_stop.py" />
+</launch>
+```
+
+実行します。
+
+```
+$ ./travis_prepare_dummy_files.bash
+$ rostest cpimouse_run_corridor wall_stop.launch
+... logging to /home/ueda/.ros/log/rostest-ubuntu-8352.log
+[ROSUNIT] Outputting test results to /home/ueda/.ros/test_results/cpimouse_run_corridor/rostest-launch_wall_stop.xml
+[Testcase: testtest_wall_stop] ... ok
+
+[ROSTEST]-----------------------------------------------------------------------
+
+[cpimouse_run_corridor.rosunit-test_wall_stop/test_io][passed]
+
+SUMMARY
+ * RESULT: SUCCESS
+ * TESTS: 1
+ * ERRORS: 0
+ * FAILURES: 0
+
+rostest log file is in /home/ueda/.ros/log/rostest-ubuntu-8352.log
+```
+
 ## Travis CIでのテスト
+
+
+
 
 ### 準備
 
