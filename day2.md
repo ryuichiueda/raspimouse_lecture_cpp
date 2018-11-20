@@ -37,8 +37,18 @@ $ head /dev/rtmotor_raw_?0
 ``` 
 
 * 自動のシェルスクリプトを書く
+    * キーワード: 終了ステータス
     * https://github.com/ryuichiueda/cpimouse_run_corridor/blob/master/test/manual_test.bash
 
+## Pythonでテストを書く
+
+C++でもいいんですがちょっと冗長になってしまうので、こういうものはPythonでさらっと書けると捗ります。
+
+* 例
+    * https://github.com/ryuichiueda/cpimouse_run_corridor/blob/master/test/travis_test_wall_stop.py
+* ポイント
+    * `self`: 自分への参照
+    * `assert...`: 引数の内容をチェックして、ダメだとコードを止めて非ゼロの終了ステータスを返す
 
 ## Travis CIでのテスト
 
